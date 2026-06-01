@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "image": "image/f1.png",
+        "name": "F1 24",
+        "description": "F1 24 introduced a revamped new career mode, in which players manage team contracts and various objectives to gain reputation. In addition to playing as any of the 20 Formula 1 drivers, players can play as Formula 2 and retired drivers.",
+        "price": 250
+    },
+    {
+        "id": 2,
+        "image":"image/behemoth.png",
+        "name": "Behemoth",
+        "description": "A Dangerous New World: Survive the four biomes of the Forsaken Lands. From snowy tundras to swampy marshlands, the harsh environments may seem uninhabitable, but they hide swarms of traitorous marauders and something much, much worse Brutal Violence Solves Everything: Use your superstrength in bone-crunching, flesh-cleaving ways to cut down, maim, sever, break and rip apart your enemies.",
+        "price": 410
+    },
+    {
+        "id": 3,
+        "image": "image/gta5.png",
+        "name": "GTA V",
+        "description": "When a young street hustler, a retired bank robber, and a terrifying psychopath find themselves entangled with some of the most frightening and deranged elements of the criminal underworld, the U.S. government, and the entertainment industry, they must pull off a series of dangerous heists to survive in a ruthless city ..",
+        "price": 250
+    },
+    {
+        "id": 4,
+        "image": "image/dbz.png",
+        "name": "Dragon ball Z Kakarot",
+        "description": "Beyond the epic battles, experience life in the DRAGON BALL Z world as you fight, fish, eat, and train with Goku, Gohan, Vegeta and others. Explore the new areas and adventures as you advance through the story and form powerful bonds with other heroes from the DRAGON BALL Z universe.",
+        "price": 300
+    },
+    {
+        "id": 5,
+        "image": "image/fall.png",
+        "name": "Fall Guys",
+        "description": "Fall Guys is a battle royale game, developed by Mediatonic and published by Devolver Digital. The gameplay for Fall Guys was inspired by the 1980s gameshow Takeshi's Castle. In Fall Guys, up to 60 players in a match compete to win each round. Players must survive each round by completing the goals of each round.",
+        "price": 260
+    },
+    {
+        "id": 6,
+        "image": "image/detroit.png",
+        "name": "Detroit:  Become Human",
+        "description": "Set in Detroit City during the year 2038, the city has been revitalized by the invention and introduction of Androids into everyday life. But when Androids start behaving as if they are alive, events begin to spin out of control.",
+        "price": 370
+    },
+    {
+        "id": 7,
+        "image": "image/uncharted.png",
+        "name": "Uncharted 4: A Thief's End",
+        "description": "Several years after his last adventure, retired fortune hunter Nathan Drake, is forced back into the world of thieves. Fate comes calling when Sam, Drake's presumed dead brother, resurfaces seeking his help to save his own life and offering an adventure Drake can't resist. Winner of over 150 Game of the Year awards.",
+        "price": 230
+    },
+    {
+        "id": 8,
+        "image": "image/spidermanmiles.png",
+        "name": "Spiderman Miles Morales",
+        "description": "A war for control of Marvel's New York has broken out between a devious energy corporation and a high-tech criminal army. With his new home at the heart of the battle, Miles must learn the cost of becoming a hero and decide what he must sacrifice for the greater good.",
+        "price": 470
+    },
+    {
+        "id": 9,
+        "image": "image/assasin.png",
+        "name": "Assasin's Creed Rogue",
+        "description": "Bridging the gap between Assassin's Creed IV and III, as tragedy and failure force Shay Cormac to question his own Creed. The Assassin turns Templar and embarks on a quest of vengeance and personal revelation, during the Seven Years' War. Set during the 7 years war you play as Shay Cormac.",
+        "price": 470
+    }
+]

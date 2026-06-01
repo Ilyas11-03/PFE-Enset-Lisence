@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Now</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" href="image/cover.png" type="image/x-icon" style="border-radius: 20px;">
+    <!--Sweet Alert-->
+    <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="main.html">
+                <i class="fa-brands fa-playstation" style="font-size: 1.4cm;"></i>
+                <h2 style="padding: 10px 0 0;font-weight: bold;display: inline;">PS5</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link active" aria-current="page" href="main.html">Home</a>
+                    <a class="nav-link active" href="game.html">Games</a>
+                    <a class="nav-link active" href="promotion.html">Promotion</a>
+                    <a class="nav-link active" href="login.html">Log in</a>
+                    <a class="nav-link active" href="signin.html">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <marquee behavior="" direction="left" style="font-weight: bold;">Buy the console Play Station 5 Now.</marquee>
+    <div id="carouselExampleDark" class="carousel carousel-dark slide">
+        <div class="carousel-indicators" style="position: absolute;top: 6em;color: aliceblue;">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000" style="text-align: center;color: black;">
+            <h5>Livraison standard gratuite pour toutes les commandes</h5>
+                <p style="font-style: italic;font-weight: lighter;">Des conditions s’appliquent.</p>
+                <a href="https://direct.playstation.com/fr-fr/support/delivery-tracking" style="text-decoration: none;">En savoir plus.</a></h5>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000" style="text-align: center;color: black;">
+            <h5>Retour sous 30 jours gratuit.</h5>
+            <a href="https://direct.playstation.com/fr-fr/support/cancellation-returns-refunds-warranties" style="text-decoration: none;">En savoir plus.</a>
+            <div class="carousel-caption d-none d-md-block mt-10">
+           
+            </div>
+          </div>
+          <div class="carousel-item" style="text-align: center;color: black;">
+            <h5>L'expérience PlayStation. Découvrez toujours plus de raisons d’acheter chez nous.</h5>
+            <a href="https://direct.playstation.com/fr-fr/benefits" data-bs-interval="3000" style="text-decoration: none;">En savoir plus.</a>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+         
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+   
+
+    
+      
+      <div class="text">
+        <div class="scroll-container">
+            <a href="image/info1.png"><img src="image/info1.png" alt="" height="500" width="400"></a>
+            <a href="image/info2.png"><img src="image/info2.png" alt="" height="500" width="400"></a>
+        </div>
+        <img src="image/console.png" alt="" style="position: absolute;right: 50em;top: 8em;">
+          
+        <div class="cart-container">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items" class="list-group mb-3"></ul>
+            <p id="total-price" class="text-right">Total Price: 0.00 DH</p>
+            <button class="btn btn-primary" id="checkout-button">Checkout</button>
+        </div>
+        
+        <p id="deal">Deal</p>
+        <h5 style="font-size: xx-large;">Console PlayStation®5 (modèle - slim)*</h5>
+        <p style="font-size: xx-large;" class="text-right">7000.00 DH</p>
+        <p style="font-size: x-large;">Espace de rangement: <strong>1To</strong></p>
+        <p style="font-size: large;">The console offers new gaming possibilities.</p>
+        <p style="font-size: large;">Discover the accelerated loading times offered by a <br> ultra-fast SSD drive, greater immersion thanks to <br>tactile feedback, adaptive triggers and 3D sound**, without forgetting an exceptional catalog of PlayStation games ® new generation.</p>
+        <a href="#" class="btn btn-danger add-to-cart" style="border-radius: 10px;font-size: x-large;">Add to Cart</a> <br> <br>
+        <a href="https://pegi.info/fr/page/que-signifient-les-logos"><img src="image/pegi.png" alt=""></a> <img src="image/punch.png" alt="">
+        <hr>
+        <ul style="font-size: small;margin-top: 8em;">
+            <li>Free standard delivery on all orders.</li> <br>
+            <li>Vertical base sold separately.</li> <br>
+            <li>Paid PlayStation®Plus subscription required for online multiplayer. Sold separately. For more information, see additional terms.</li> <br>
+            <li>For information on minimum security update periods please see additional terms.</li>
+        </ul>
+        <img src="image/garantie.png" alt="" style="position: absolute;right: 10em;">
+       
+    </div>
+
+
+    <style>
+       
+       body {
+            background-image: url('image/giphy3.webp');
+            background-repeat: no-repeat;
+            background-size: 100em;
+        }
+        #deal {
+            border: none !important;
+            background-color: brown;
+            color: #fff;
+            width: fit-content;
+            font-size: x-large;
+            border-radius: 10px;
+            
+        }
+        .text {
+            position: absolute;
+            margin-right: 2em;
+            margin-top: 50em;
+            margin-left: 60em;
+            
+        }
+        nav a:hover {
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+        div.scroll-container {
+            overflow: auto;
+            position: absolute;
+            right: 37em;
+            top: 30em;
+            white-space: nowrap;
+            padding: 10px;
+            background-color: transparent;
+            border-radius: 10px;
+
+        }
+        div.scroll-container a {
+           padding: 10px;
+        }
+        
+       .text {
+        position: absolute;
+        left: 5em;
+       }
+     
+    </style>
+
+    <script>
+           $(document).ready(function() {
+    let cart = [];
+    const cartItemsContainer = $('#cart-items');
+    const totalPriceContainer = $('#total-price');
+
+    // Retrieve cart from local storage if available
+    const storedCart = localStorage.getItem('cart-items');
+    if (storedCart) {
+        cart = JSON.parse(storedCart);
+        updateCart();
+    }
+
+    $('.add-to-cart').click(function() {
+        const card = $(this).closest('.card');
+        const title = card.find('h5').text().trim();
+        const price = parseFloat(card.find('.text-right').text().replace('DH', ''));
+
+        const item = {
+            title: "Console PlayStation®5 (modèle - slim)*",
+            price: 7000.00,
+            quantity: 1
+        };
+
+        // Check if the item already exists in the cart
+        const existingItemIndex = cart.findIndex(cartItem => cartItem.title === item.title);
+        if (existingItemIndex >= 0) {
+            cart[existingItemIndex].quantity += 1;
+        } else {
+            cart.push(item);
+        }
+        // Update the cart
+        updateCart();
+    });
+
+    function updateCart() {
+        cartItemsContainer.empty();
+        let totalPrice = 0;
+
+        cart.forEach(item => {
+            totalPrice += item.price * item.quantity;
+            const cartItem = `
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>${item.title} - ${item.price}.00 DH</span>
+                    <input type="number" class="form-control quantity-input" value="${item.quantity}" min="1" data-title="${item.title}" style="width: 60px; margin-right: 10px;">
+                    <button class="btn btn-sm btn-danger remove-from-cart" data-title="${item.title}">Remove</button>
+                </li>
+            `;
+            cartItemsContainer.append(cartItem);
+        });
+        totalPriceContainer.text(`Total Price: ${totalPrice}.00 DH`);
+        // Save the cart to local storage
+        localStorage.setItem('cart-items', JSON.stringify(cart));
+
+        // Add event listeners for remove buttons and quantity inputs
+        $('.remove-from-cart').click(function() {
+            const title = $(this).data('title');
+            cart = cart.filter(item => item.title !== title);
+            updateCart();
+        });
+
+        $('.quantity-input').change(function() {
+            const title = $(this).data('title');
+            const newQuantity = parseInt($(this).val());
+            const itemIndex = cart.findIndex(cartItem => cartItem.title === title);
+            if (itemIndex >= 0 && newQuantity > 0) {
+                cart[itemIndex].quantity = newQuantity;
+            }
+            updateCart();
+        });
+    }
+
+    $('#checkout-button').click(function() {
+        const totalPrice = parseFloat(totalPriceContainer.text().replace('Total Price: ', '').replace('DH', '')) || 0;
+        if (totalPrice === 0 && cart.length === 0) {
+            swal({
+                title: "Your cart is empty!",
+                text: "Please add something to your cart",
+                icon: "error",
+                confirmButtonText: "OK"
+            });
+        } else {
+            sessionStorage.setItem("total-price", totalPrice);
+            window.location.href = "checkout.html";
+        }
+    });
+});
+
+
+    </script>
+</body>
+</html>
