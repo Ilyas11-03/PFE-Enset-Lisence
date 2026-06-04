@@ -1,42 +1,112 @@
+// ========================================
+// CONFIGURATION
+// ========================================
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+// ========================================
+// MODÈLES
+// ========================================
 
-  carts     Cart[]
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Relations
+  carts    Cart[]
+  orders   Order[]
+  payments Payment[]
+
+  @@map("users")
 }
 
 model Game {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   title       String
-  description String
+  description String    @db.Text
   price       Float
   genre       String
-  promotion   Boolean  @default(false)
-  image       String   
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  promotion   Boolean   @default(false)
+  image       String
+  stock       Int       @default(10)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
-  carts       Cart[]
+  // Relations
+  carts     Cart[]
+  orderItems OrderItem[]
+
+  @@map("games")
 }
 
 model Cart {
   id        Int      @id @default(autoincrement())
   userId    Int
   gameId    Int
+  quantity  Int      @default(1)
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  user      User     @relation(fields: [userId], references: [id])
-  game      Game     @relation(fields: [gameId], references: [id])
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  game Game @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, gameId])
+  @@map("carts")
+}
+
+model Order {
+  id         Int       @id @default(autoincrement())
+  userId     Int
+  total      Float
+  status     String    @default("PENDING") // PENDING, COMPLETED, CANCELLED
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  // Relations
+  user  User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items OrderItem[]
+  payment Payment?
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id      Int    @id @default(autoincrement())
+  orderId Int
+  gameId  Int
+  quantity Int   @default(1)
+  price   Float  // Prix au moment de la commande
+
+  // Relations
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  game  Game  @relation(fields: [gameId], references: [id])
+
+  @@map("order_items")
+}
+
+model Payment {
+  id           Int       @id @default(autoincrement())
+  orderId      Int       @unique
+  userId       Int
+  amount       Float
+  paymentMethod String   @default("credit_card") // credit_card, debit_card, paypal
+  stripePaymentIntentId String? @unique
+  status       String    @default("PENDING") // PENDING, COMPLETED, FAILED, REFUNDED
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  // Relations
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
 }

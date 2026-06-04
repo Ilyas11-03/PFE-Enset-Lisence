@@ -1,31 +1,113 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config(); // Load environment variables
+
+// Vérifier que JWT_SECRET est défini
+if (!process.env.JWT_SECRET) {
+  console.error('❌ FATAL: JWT_SECRET is not defined in .env file!');
+  process.exit(1);
+}
+
 const JWT_SECRET = process.env.JWT_SECRET;
 
+/**
+ * Middleware d'authentification JWT
+ * Vérifie le token dans le header Authorization
+ */
 const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers['authorization']; // Use 'authorization' instead of 'Authorization'
-  console.log('Authorization Header:', authHeader);
-
+  // Récupérer le header Authorization
+  const authHeader = req.headers['authorization'];
+  
   if (!authHeader) {
-    return res.status(401).json({ message: 'Access denied' });
+    return res.status(401).json({
+      success: false,
+      message: 'Access denied. No token provided.'
+    });
   }
 
-  const token = authHeader.split(' ')[1]; // Split by space to get the token
-  console.log('Extracted Token:', token);
-
-  if (!token) {
-    return res.status(401).json({ message: 'Access denied' });
+  // Extraire le token (format: "Bearer <token>")
+  const parts = authHeader.split(' ');
+  
+  if (parts.length !== 2 || parts[0] !== 'Bearer') {
+    return res.status(401).json({
+      success: false,
+      message: 'Invalid token format. Use: Bearer <token>'
+    });
   }
+
+  const token = parts[1];
 
   try {
-    const verified = jwt.verify(token, JWT_SECRET);
-    console.log('Verified Token:', verified);
-    req.user = verified;
+    // Vérifier le token
+    const decoded = jwt.verify(token, JWT_SECRET);
+    
+    // Attacher les informations de l'utilisateur à la requête
+    req.user = {
+      id: decoded.id,
+      email: decoded.email
+    };
+    
     next();
-  } catch (err) {
-    console.error('Token verification error:', err);
-    res.status(400).json({ message: 'Invalid token' });
+    
+  } catch (error) {
+    console.error('❌ Token verification error:', error.message);
+    
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({
+        success: false,
+        message: 'Token expired. Please login again.',
+        code: 'TOKEN_EXPIRED'
+      });
+    }
+    
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid token.',
+        code: 'INVALID_TOKEN'
+      });
+    }
+    
+    return res.status(401).json({
+      success: false,
+      message: 'Token verification failed.',
+      code: 'TOKEN_ERROR'
+    });
   }
 };
 
-module.exports = authenticateToken;
+/**
+ * Middleware optionnel - n'échoue pas si pas de token
+ * Utile pour les routes qui peuvent être accessibles avec ou sans auth
+ */
+const optionalAuth = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  
+  if (!authHeader) {
+    return next();
+  }
+
+  const parts = authHeader.split(' ');
+  
+  if (parts.length !== 2 || parts[0] !== 'Bearer') {
+    return next();
+  }
+
+  const token = parts[1];
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.user = {
+      id: decoded.id,
+      email: decoded.email
+    };
+  } catch (error) {
+    // Token invalide, mais on continue quand même
+    console.warn('⚠️ Optional auth: Invalid token provided');
+  }
+  
+  next();
+};
+
+module.exports = {
+  authenticateToken,
+  optionalAuth
+};

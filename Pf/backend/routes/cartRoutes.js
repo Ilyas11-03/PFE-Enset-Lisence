@@ -13,8 +13,6 @@ router.post('/cart', authenticateToken, async (req, res) => {
   const { gameId } = req.body;
   const userId = req.user.id;
  
-
-
   try {
     const cartItem = await prisma.cart.create({
       data: {

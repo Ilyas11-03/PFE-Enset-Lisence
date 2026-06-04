@@ -1,612 +1,845 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Store</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta name="description" content="Catalogue complet des jeux PS5 - PF Game Store">
+    
+    <title>Games - PF Game Store</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Favicon -->
     <link rel="icon" href="image/cover.png" type="image/x-icon">
-    <!--TailwindCss-->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
-    <!--Sweet Alert-->
-    <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
     
-    <div class="loader">
-
-    </div>
-    <style>
-        .loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: white;
-        transition: opacity 0.75s , visibility 0.75s;
-      }
-      .loader-hidden {
-        opacity: 0;
-        visibility: hidden;
-      }
-      .loader::after {
-        content: "";
-        width: 75px;
-        height: 75px;
-        border: 15px solid gray;
-        border-top-color:blueviolet;
-        border-radius: 50%;
-        animation: loading 1s ease infinite;
-      }
-      
-      @keyframes loading {
-        from {
-          transform: rotate(0turn);
-        }
-        to {
-          transform: rotate(1turn);
-      }
-    } 
-        .card-img-top {
-            transition: transform 0.3s ease;
-        }
-        #sidebar {
-            margin-top: 10px; 
-        }
-        #sidebar .nav-link {
-            padding: 0.5rem 1rem;
-            border-bottom: 1px solid #dee2e6;
-        }
-        #sidebar .nav-link:first-child {
-            margin-bottom: 20px;
-        }
-        #sidebar .nav-link:hover {
-            background-color: #4376aa;
-        }
-        #sidebar .sidebar-title {
-            margin-bottom: 20px;
-            padding: 0.5rem 1rem;
-        }
-
-        nav {
-              justify-content: center;
-              cursor: pointer;
-              position: sticky;
-          }
-          nav a:hover{
-            border: #777 1px solid;
-            border-radius: 10px;
-            background-color: transparent !important;
-          }
-          #filter {
-            width: fit-content;
-            text-align: center;
-          }
-    
-    </style>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/game.css">
 </head>
 <body>
+    <!-- Loader -->
+    <div class="loader"></div>
 
-
- 
-
-
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="main.html">
-                <i class="fa-brands fa-playstation" style="font-size: 1.4cm;"></i>
-                <h2 style="padding: 10px 10px 0 10px;font-weight: bold;display: inline;">PS5</h2>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="main.html" class="navbar-brand">
+                <i class="fa-brands fa-playstation"></i>
+                <span>PS5 Store</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link active" aria-current="page" href="main.html" style="margin-left: 20px;">Home</a>
-                    <a class="nav-link active" href="game.html">Games</a>
-                    <a class="nav-link active" href="promotion.html">Promotion</a>
-                    <a class="nav-link active" href="login.html">Log in</a>
-                    <a class="nav-link active" href="signin.html">Sign up</a>
-                </div>
-            </div>
+            
+            <ul class="navbar-nav">
+                <li><a href="main.html" class="nav-link">Home</a></li>
+                <li><a href="game.html" class="nav-link active">Games</a></li>
+                <li><a href="main.html#coming-soon" class="nav-link">Coming Soon</a></li>
+                <li><a href="promotion.html" class="nav-link">Promotions</a></li>
+                <li><a href="login.html" class="nav-link">Log In</a></li>
+                <li><a href="signin.html" class="nav-link btn btn-primary" style="padding: 0.5rem 1.5rem;">Sign Up</a></li>
+            </ul>
         </div>
     </nav>
-  <marquee behavior="" direction="right" style="font-weight: bold;">All games available.</marquee>
-  <div class="row">
-    <select id="filter">
-        <option value="default">Filter</option>
-        <option value="expensive">Most Expensive</option>
-        <option value="cheap">Most Affordable</option>
-    </select>
-    
-  </div>
 
-
-
-
-
-
-
-
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <h2 class="sidebar-title">Categories</h2>
-
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="game.html">All Games</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="sports.html">Sports Games</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="action.html">Action Games</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Hunter.html">Hunter Games</a>
-                        </li>
-                        
-                        <div class="cart-container">
-                            <h2>Shopping Cart</h2>
-                            <ul id="cart-items" class="list-group mb-3"></ul>
-                            <p id="total-price" class="text-right">Total Price: 0.00 DH </p>
-                            <button class="btn btn-primary" id="checkout-button" href="checkout.html">Checkout</button>
-                            
-            
-                        </div>
-
-                      
-                    </ul>
-                
-                
-                </div>
-            </nav>
-            <main role="main" class="col-md-9 col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">All Games</h1>
-                </div>
-                <div class="row">
-                    <!-- Game 1 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/batman.png" class="card-img-top" alt="Game 1">
-                            <div class="card-body">
-                                <h2 class="card-title">Batman</h2>
-                                <p class="card-text">Embrace the darkness and become the legendary Dark Knight in Batman. Step into the shadows of Gotham City and wage war against crime as Batman. Utilize stealth, gadgets, and martial arts to take down Gotham's most notorious villains. Immerse yourself in a gripping narrative, iconic locations, and intense action. Unravel the mysteries of Gotham and become the hero the city deserves.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 560.00DH</p>
-                                    <span style="margin-left: 1em;"  >Quantity available : 4 items</span> <br>
-                                    <span >Get it as soon as 2 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                    
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 2 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/spiderman.png" class="card-img-top" alt="Game 2">
-                            <div class="card-body">
-                                <h2 class="card-title">Spider-Man</h2>
-                                <p class="card-text">Swing into action as the iconic web-slinger in Spider-Man. Dive into the bustling streets of New York City, where you'll battle villains, swing between skyscrapers, and save the day. Master Spidey's acrobatic combat and web-slinging abilities to thwart crime and protect the city. With an engaging story and exhilarating gameplay, Spider-Man delivers an unforgettable superhero experience.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 600.00DH</p>
-                                    <span style="margin-left: 1em;" >Quantity available : 2 items</span>
-                                    <span>Get it as soon as 5 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 3 -->
-                    <div class="col-md-4">
-                         <div class="card mb-4 shadow-sm">
-                            <img src="image/ghost.png" class="card-img-top" alt="Game 3">
-                            <div class="card-body">
-                                <h2 class="card-title">Ghost Tsushima</h2>
-                                <p class="card-text">Immerse yourself in feudal Japan's gripping tale of honor and sacrifice with Ghost of Tsushima. As Jin Sakai, unleash lethal swordplay and stealth tactics against Mongol invaders in a vast, stunning open world. Customize your playstyle, forge your legend, and experience the ultimate samurai adventure. Join friends in Legends mode for thrilling multiplayer action. Don't miss out – order now and become the Ghost of Tsushima.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 700.00DH</p>
-                                    <span style="margin-left: 1em;"  >Quantity available : 5 items</span>
-                                    <span >Get it as soon as 30 June</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 4 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/silenthill1.jpg" class="card-img-top" alt="Game 4">
-                            <div class="card-body">
-                                <h2 class="card-title">Silent Hill 2</h2>
-                                <p class="card-text">Descend into the depths of terror with Silent Hill 2. Explore the fog-shrouded town of Silent Hill as James Sunderland, a man haunted by his past. Navigate through chilling environments filled with unspeakable horrors and unravel the mysteries that lurk in the darkness. With its haunting atmosphere, psychological horror, and gripping narrative, Silent Hill 2 delivers an unforgettable journey into madness..</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 550.00DH</p>
-                                    <span style="margin-left: 1em;" >Quantity available : 2 items</span>
-                                    <span >Get it as soon as 4 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 5 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/godofwar.png" class="card-img-top" alt="Game 5">
-                            <div class="card-body">
-                                <h2 class="card-title">God of War</h2>
-                                <p class="card-text">Unleash your wrath in God of War. Embark on an epic journey as Kratos, a vengeful Spartan warrior turned god, as he battles through the realms of Norse mythology. With his mighty axe and raw power, face off against gods, monsters, and ancient prophecies. Explore breathtaking landscapes, solve intricate puzzles, and experience a deeply emotional story of redemption and fatherhood. God of War sets a new standard for action-adventure games with its stunning visuals, intense combat, and immersive storytelling.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 650.00DH</p>
-                                    <span style="margin-left: 1em;" >Quantity available : 3 items</span>
-                                    <span >Get it as soon as 1 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/lastofus.png" class="card-img-top" alt="Game 6">
-                            <div class="card-body">
-                                <h2 class="card-title">The Last of Us</h2>
-                                <p class="card-text">Experience the harrowing tale of survival in The Last of Us. Join Joel and Ellie, two survivors navigating a post-apocalyptic world ravaged by a deadly infection. Journey across a ravaged America, facing threats both human and infected, as you grapple with themes of loss, loyalty, and the bonds of humanity. With its gripping storytelling, tense gameplay, and unforgettable characters, The Last of Us delivers a cinematic gaming experience like no other.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 600.00DH</p>
-                                    <span style="margin-left: 1em;" >Quantity available : 4 items</span>
-                                    <span >Get it as soon as 8 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 7 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/fifa.png" class="card-img-top" alt="Game 7">
-                            <div class="card-body">
-                                <h2 class="card-title">FIFA </h2>
-                                <p class="card-text">Experience the thrill of the beautiful game with our FifA football, a captivating football simulation that puts you in control of your favorite teams and players. Immerse yourself in the realistic graphics and fluid gameplay as you compete in iconic stadiums around the world. Whether you're conquering the pitch in Career Mode, building your dream team in Ultimate Team, or showcasing your skills in Volta Football, every match is a chance to create unforgettable moments. With unparalleled authenticity and endless replay value, this game is a must-have for football enthusiasts and gamers alike</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 500.00DH</p>
-                                    <span style="margin-left: 1em;" >Quantity available : 5 items</span>
-                                    <span style="margin-top: 0.3em;">Get it as soon as 2 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 8 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/superstreet.jpg" class="card-img-top" alt="Game 8">
-                            <div class="card-body">
-                                <h2 class="card-title">SuperStreet</h2>
-                                <p class="card-text">SuperStreet is a high-octane racing game that brings the thrill of street racing to your fingertips. Customize your ride with hundreds of parts and take on challenging courses in stunning urban environments. Experience realistic physics and dynamic weather conditions that will test your driving skills. Compete in various game modes, including career, multiplayer, and time trials. Get ready to rule the streets and prove you're the best racer out there.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 550.00DH</p>
-                                    <span style="margin-left: 1em;" >Quantity available : 10 items</span>
-                                    <span>Get it as soon as 2 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 9 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/grandtheft.webp" class="card-img-top" alt="Game 9">
-                            <div class="card-body">
-                                <h2 class="card-title">Grand Theft </h2>
-                                <p class="card-text">Grand Theft is an action-packed open-world game where you live the life of a criminal mastermind. Explore a vast city filled with opportunities and dangers, from high-speed car chases to intense shootouts. Build your empire by completing daring heists, engaging in thrilling missions, and outsmarting the law. Customize your character, upgrade your arsenal, and form alliances to dominate the underworld. Immerse yourself in a gripping storyline and dynamic environments that react to your every move.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 500.00DH</p>
-                                    <span style="margin-left: 1em;" >Quantity available : 4 items</span>
-                                    <span >Get it as soon as 2 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 10 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/callofduty.jpg" class="card-img-top" alt="Game 10">
-                            <div class="card-body">
-                                <h2 class="card-title">Call Of Duty</h2>
-                                <p class="card-text">Answer the call to duty in the adrenaline-fueled world of Call of Duty. Immerse yourself in heart-pounding combat across a variety of global theaters, from gritty urban streets to intense battlegrounds. With its intense multiplayer action, gripping single-player campaigns, and expansive cooperative modes, Call of Duty offers an unmatched first-person shooter experience. Join millions of players worldwide and become a part of gaming history with the iconic franchise that redefines modern warfare.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 550.00DH</p>
-                                    <span style="margin-left: 1em;" >Quantity available : 4 items</span>
-                                    <span >Get it as soon as 4 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 11 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/nba2k.png" class="card-img-top" alt="Game 1" height="20em">
-                            <div class="card-body" >
-                                <h2 class="card-title">NBA 2K</h2>
-                                <p class="card-text">Michael Jordan, one of the true G.O.A.T.s of the game, joins the MyTEAM G.O.A.T. Series! The Ignite release features eight different versions of MJ, including a 97 Overall Galaxy Opal for completing the latest Skill Challenge in this release. We are at the halfway point of the Season, meaning just three more of these Challenges are on their way before you can earn the Dark Matter Coach Card for Phil Jackson!</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 500.00DH</p>
-                                    <span style="margin-left: 1em;"  >Quantity available : 6 items</span> <br>
-                                    <span >Get it as soon as 4 July</span> 
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 12 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/baseball.png" class="card-img-top" alt="Game 2">
-                            <div class="card-body">
-                                <h2 class="card-title">MLB the show 24</h2>
-                                <p class="card-text">Experience career-defining moments through a combination of immersive gameplay that will educate and inspire you to make history of your own. Unlock your moment and build your career in the ultimate baseball role-playing experience. Become a ballplayer and journey from the minors to the majors to define your legacy.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 600.00DH</p>
-                                    <span style="margin-left: 1em;"  >Quantity available : 4 items</span> <br>
-                                    <span >Get it as soon as 7 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 13 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/gran turismo.jpg" class="card-img-top" alt="Game 3">
-                            <div class="card-body">
-                                <h2 class="card-title">Gran Turismo</h2>
-                                <p class="card-text">Experience the pinnacle of racing realism with Gran Turismo. Immerse yourself in the world's most iconic cars and tracks as you compete in exhilarating races and challenges. With stunning graphics, lifelike physics, and meticulous attention to detail, Gran Turismo delivers an unparalleled driving experience. From classic muscle cars to cutting-edge supercars, customize and tune your vehicles to perfection. Whether you're a casual racer or a hardcore enthusiast, Gran Turismo offers something for everyone with its extensive single-player modes, competitive online multiplayer, and immersive VR support.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 800.00DH</p>
-                                    <span style="margin-left: 1em;"  >Quantity available : 4 items</span> <br>
-                                    <span >Get it as soon as 12 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 14 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/madden.jpg" class="card-img-top" alt="Game 4">
-                            <div class="card-body">
-                                <h2 class="card-title">Madden NFL</h2>
-                                <p class="card-text">Dive into the gridiron action with Madden NFL. Experience the excitement of American football like never before as you take control of your favorite teams and players. With realistic gameplay mechanics, authentic stadiums, and immersive commentary, Madden NFL brings the thrill of the NFL straight to your fingertips. Whether you're playing solo in Franchise mode, competing against friends in multiplayer matchups, or testing your skills online, Madden NFL offers endless hours of football fun for fans of all ages. Get ready to hit the field and dominate the competition in the ultimate football simulation.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 700.00DH</p>
-                                    <span style="margin-left: 1em;"  >Quantity available : 4 items</span> <br>
-                                    <span >Get it as soon as 6 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 15 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/EA-SPORTS-UFC-5.jpg" class="card-img-top" alt="Game 5">
-                            <div class="card-body">
-                                <h2 class="card-title">UFC 4</h2>
-                                <p class="card-text">Step into the Octagon once again in UFC 5: Return of the Beast. Relive the intense action of the historic Ultimate Fighting Championship event that took place on April 7, 1995, at the Independence Arena in Charlotte, North Carolina. Choose your favorite fighters from a roster of martial arts legends and compete in a no-holds-barred tournament format. Experience the thrill of victory and the agony of defeat as you battle it out in brutal knockouts and technical submissions. With its raw intensity and diverse fighting styles</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-primary">Price : 800.00DH</p>
-                                    <span style="margin-left: 1em;"  >Quantity available : 10 items</span> <br>
-                                    <span >Get it as soon as 7 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 16 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="image/snowrunner.jpg" class="card-img-top" alt="Game 6">
-                            <div class="card-body">
-                                <h2 class="card-title">Snow Runner</h2>
-                                <p class="card-text">Embark on an epic off-road adventure with SnowRunner for PlayStation. Brave the harshest winter conditions and conquer treacherous terrain in a variety of rugged vehicles. From snow-covered mountains to icy rivers, navigate through dynamic environments filled with obstacles and challenges. With realistic physics and stunning graphics, SnowRunner delivers an immersive experience that will test your driving skills and determination. Whether you're hauling cargo, rescuing stranded vehicles, or exploring the wilderness, every journey in SnowRunner is a thrilling test of endurance and skill. Gear up, rev your engines, and prepare to tackle the ultimate off-road challenge in SnowRunner
-                                    <p class="text-primary">Price : 700.00DH</p>
-                                    <span style="margin-left: 1em;"  >Quantity available : 6 items</span> <br>
-                                    <span >Get it as soon as 10 July</span>
-                                    <button type="button" class="btn btn-dark add-to-cart">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-   
-<script>
-
-$(document).ready(function(){
-    $('#filter').change(function(){
-        var selectedOption = $(this).val();
-        $('.card').each(function(){
-            var cardPrice = parseInt($(this).find('.card-price').text());
-            if(selectedOption === 'expensive' && cardPrice <= 400) {
-                $(this).hide();
-            } else if(selectedOption === 'cheap' && cardPrice >= 250) {
-                $(this).hide();
-            } else {
-                $(this).show();
-            }
-        });
-    });
-
-    // katadd price tag hda kol 
-    $('.card').each(function(){
-        var cardPrice = $(this).find('.card-price').text();
-        $(this).find('.card-body').append('<span class="badge bg-primary">' + cardPrice + '</span>');
-    });
-});
-//loading
-window.addEventListener("load", () => {
-          const loader = document.querySelector(".loader");
-          
-          loader.classList.add("loader-hidden");
-          loader.addEventListener("transitionend", () => {
-            document.body.removeChild("loader");
-          })
-        })
-
-
-        //shopping cart
-
-        $(document).ready(function() {
-    let cart = [];
-    const cartItemsContainer = $('#cart-items');
-    const totalPriceContainer = $('#total-price');
-    
-    // Retrieve cart from local storage if available
-    const storedCart = localStorage.getItem('cart-items');
-    if (storedCart) {
-        cart = JSON.parse(storedCart);
-        updateCart();
-    }
-
-    $('.add-to-cart').click(function() {
-        const card = $(this).closest('.card');
-        const title = card.find('.card-title').text();
-        const price = parseFloat(card.find('.text-primary').text().replace('Price : ', '').replace('DH', ''));
-
-        const item = {
-            title: title,
-            price: price,
-            quantity: 1
-        };
-        // Search if the product is already in the cart
-        const existingItemIndex = cart.findIndex(cartItem => cartItem.title === item.title);
-        if (existingItemIndex >= 0) {
-            cart[existingItemIndex].quantity += 1;
-        } else {
-            cart.push(item);
-        }
-        // Update the cart
-        updateCart();
-    });
-
-    function updateCart() {
-        cartItemsContainer.empty();
-        let totalPrice = 0;
-
-        cart.forEach(item => {
-            totalPrice += item.price * item.quantity;
-            const cartItem = `
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span>${item.title} - ${item.price}.00 DH</span>
-                    <input type="number" class="form-control quantity-input" value="${item.quantity}" min="1" data-title="${item.title}" style="width: 60px; margin-right: 10px;">
-                    <button class="btn btn-sm btn-danger remove-from-cart" data-title="${item.title}">Remove</button>
+    <!-- Main Layout -->
+    <div class="game-page">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">
+                <i class="fas fa-tags"></i>
+                Categories
+            </h2>
+            <ul class="category-list">
+                <li class="category-item">
+                    <a href="game.html" class="category-link active">
+                        <i class="fas fa-gamepad"></i>
+                        All Games
+                    </a>
                 </li>
-            `;
-            cartItemsContainer.append(cartItem);
-        });
-        totalPriceContainer.text(`Total: ${totalPrice}.00 DH`);
-        // Save the cart to local storage
-        localStorage.setItem('cart-items', JSON.stringify(cart));
+                <li class="category-item">
+                    <a href="sports.html" class="category-link">
+                        <i class="fas fa-futbol"></i>
+                        Sports Games
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="action.html" class="category-link">
+                        <i class="fas fa-bolt"></i>
+                        Action Games
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="Hunter.html" class="category-link">
+                        <i class="fas fa-crosshairs"></i>
+                        Hunter Games
+                    </a>
+                </li>
+            </ul>
+        </aside>
 
-        $('.remove-from-cart').click(function() {
-            const title = $(this).data('title');
-            cart = cart.filter(item => item.title !== title);
-            updateCart();
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">All Games</h1>
+                <div class="filter-controls">
+                    <select id="filter" class="filter-select">
+                        <option value="default">Sort by: Default</option>
+                        <option value="expensive">Price: High to Low</option>
+                        <option value="cheap">Price: Low to High</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Games Grid -->
+            <div class="games-grid" id="games-grid">
+                <!-- Game 1: Batman -->
+                <div class="game-card" data-price="560">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/batman.png" alt="Batman" class="game-card-image">
+                        <span class="game-card-badge">Action</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">Batman</h3>
+                        <p class="game-card-description">
+                            Embrace the darkness and become the legendary Dark Knight. Step into the shadows of Gotham City and wage war against crime using stealth, gadgets, and martial arts.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">560.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                4 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 2
+                        </div>
+                        <button class="add-to-cart-btn" data-title="Batman" data-price="560" data-image="image/batman.png">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 2: Spider-Man -->
+                <div class="game-card" data-price="600">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/spiderman.png" alt="Spider-Man" class="game-card-image">
+                        <span class="game-card-badge">Action</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">Spider-Man</h3>
+                        <p class="game-card-description">
+                            Swing into action as the iconic web-slinger. Battle villains, swing between skyscrapers, and save New York City with Spidey's acrobatic combat and web-slinging abilities.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">600.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                2 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 5
+                        </div>
+                        <button class="add-to-cart-btn" data-title="Spider-Man" data-price="600" data-image="image/spiderman.png">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 3: Ghost of Tsushima -->
+                <div class="game-card" data-price="700">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/ghost.png" alt="Ghost of Tsushima" class="game-card-image">
+                        <span class="game-card-badge">Adventure</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">Ghost of Tsushima</h3>
+                        <p class="game-card-description">
+                            Immerse yourself in feudal Japan's gripping tale of honor and sacrifice. Unleash lethal swordplay and stealth tactics against Mongol invaders in a vast open world.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">700.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                5 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by June 30
+                        </div>
+                        <button class="add-to-cart-btn" data-title="Ghost of Tsushima" data-price="700" data-image="image/ghost.png">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 4: Silent Hill 2 -->
+                <div class="game-card" data-price="550">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/silenthill1.jpg" alt="Silent Hill 2" class="game-card-image">
+                        <span class="game-card-badge">Horror</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">Silent Hill 2</h3>
+                        <p class="game-card-description">
+                            Descend into the depths of terror. Explore the fog-shrouded town as James Sunderland, unraveling mysteries in chilling environments filled with unspeakable horrors.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">550.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                2 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 4
+                        </div>
+                        <button class="add-to-cart-btn" data-title="Silent Hill 2" data-price="550" data-image="image/silenthill1.jpg">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 5: God of War -->
+                <div class="game-card" data-price="650">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/godofwar.png" alt="God of War" class="game-card-image">
+                        <span class="game-card-badge">Action</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">God of War</h3>
+                        <p class="game-card-description">
+                            Embark on an epic journey as Kratos through the realms of Norse mythology. Battle gods and monsters with your mighty axe in this deeply emotional story of redemption.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">650.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                3 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 1
+                        </div>
+                        <button class="add-to-cart-btn" data-title="God of War" data-price="650" data-image="image/godofwar.png">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 6: The Last of Us -->
+                <div class="game-card" data-price="600">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/lastofus.png" alt="The Last of Us" class="game-card-image">
+                        <span class="game-card-badge">Adventure</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">The Last of Us</h3>
+                        <p class="game-card-description">
+                            Experience the harrowing tale of survival. Join Joel and Ellie navigating a post-apocalyptic world, facing threats both human and infected in this cinematic masterpiece.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">600.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                4 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 8
+                        </div>
+                        <button class="add-to-cart-btn" data-title="The Last of Us" data-price="600" data-image="image/lastofus.png">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 7: FIFA -->
+                <div class="game-card" data-price="500">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/fifa.png" alt="FIFA" class="game-card-image">
+                        <span class="game-card-badge">Sports</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">FIFA</h3>
+                        <p class="game-card-description">
+                            Experience the thrill of the beautiful game. Compete in iconic stadiums worldwide with realistic graphics and fluid gameplay in Career Mode, Ultimate Team, and Volta Football.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">500.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                5 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 2
+                        </div>
+                        <button class="add-to-cart-btn" data-title="FIFA" data-price="500" data-image="image/fifa.png">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 8: SuperStreet -->
+                <div class="game-card" data-price="550">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/superstreet.jpg" alt="SuperStreet" class="game-card-image">
+                        <span class="game-card-badge">Racing</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">SuperStreet</h3>
+                        <p class="game-card-description">
+                            High-octane street racing with realistic physics and dynamic weather. Customize your ride and compete in career, multiplayer, and time trials in stunning urban environments.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">550.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                10 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 2
+                        </div>
+                        <button class="add-to-cart-btn" data-title="SuperStreet" data-price="550" data-image="image/superstreet.jpg">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 9: Grand Theft -->
+                <div class="game-card" data-price="500">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/grandtheft.webp" alt="Grand Theft" class="game-card-image">
+                        <span class="game-card-badge">Action</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">Grand Theft</h3>
+                        <p class="game-card-description">
+                            Live the life of a criminal mastermind in this action-packed open-world game. Complete daring heists, engage in thrilling missions, and dominate the underworld.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">500.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                4 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 2
+                        </div>
+                        <button class="add-to-cart-btn" data-title="Grand Theft" data-price="500" data-image="image/grandtheft.webp">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 10: Call of Duty -->
+                <div class="game-card" data-price="550">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/callofduty.jpg" alt="Call of Duty" class="game-card-image">
+                        <span class="game-card-badge">Shooter</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">Call of Duty</h3>
+                        <p class="game-card-description">
+                            Immerse yourself in heart-pounding combat across global theaters. Experience intense multiplayer action, gripping campaigns, and expansive cooperative modes.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">550.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                4 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 4
+                        </div>
+                        <button class="add-to-cart-btn" data-title="Call of Duty" data-price="550" data-image="image/callofduty.jpg">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 11: NBA 2K -->
+                <div class="game-card" data-price="500">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/nba2k.png" alt="NBA 2K" class="game-card-image">
+                        <span class="game-card-badge">Sports</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">NBA 2K</h3>
+                        <p class="game-card-description">
+                            Michael Jordan joins the MyTEAM G.O.A.T. Series! Features eight different versions of MJ, including a 97 Overall Galaxy Opal for completing the latest Skill Challenge.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">500.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                6 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 4
+                        </div>
+                        <button class="add-to-cart-btn" data-title="NBA 2K" data-price="500" data-image="image/nba2k.png">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 12: MLB the Show 24 -->
+                <div class="game-card" data-price="600">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/baseball.png" alt="MLB the Show 24" class="game-card-image">
+                        <span class="game-card-badge">Sports</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">MLB the Show 24</h3>
+                        <p class="game-card-description">
+                            Experience career-defining moments through immersive gameplay. Unlock your moment and build your career from the minors to the majors in the ultimate baseball RPG.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">600.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                4 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 7
+                        </div>
+                        <button class="add-to-cart-btn" data-title="MLB the Show 24" data-price="600" data-image="image/baseball.png">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 13: Gran Turismo -->
+                <div class="game-card" data-price="800">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/gran turismo.jpg" alt="Gran Turismo" class="game-card-image">
+                        <span class="game-card-badge">Racing</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">Gran Turismo</h3>
+                        <p class="game-card-description">
+                            Experience the pinnacle of racing realism with the world's most iconic cars and tracks. Stunning graphics, lifelike physics, and extensive single-player and multiplayer modes.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">800.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                4 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 12
+                        </div>
+                        <button class="add-to-cart-btn" data-title="Gran Turismo" data-price="800" data-image="image/gran turismo.jpg">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 14: Madden NFL -->
+                <div class="game-card" data-price="700">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/madden.jpg" alt="Madden NFL" class="game-card-image">
+                        <span class="game-card-badge">Sports</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">Madden NFL</h3>
+                        <p class="game-card-description">
+                            Dive into the gridiron action with realistic gameplay mechanics, authentic stadiums, and immersive commentary. Play solo in Franchise mode or compete in multiplayer.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">700.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                4 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 6
+                        </div>
+                        <button class="add-to-cart-btn" data-title="Madden NFL" data-price="700" data-image="image/madden.jpg">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 15: UFC 5 -->
+                <div class="game-card" data-price="800">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/EA-SPORTS-UFC-5.jpg" alt="UFC 5" class="game-card-image">
+                        <span class="game-card-badge">Sports</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">UFC 5</h3>
+                        <p class="game-card-description">
+                            Step into the Octagon and relive the intense action of the historic UFC event. Choose your favorite fighters and compete in a no-holds-barred tournament format.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">800.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                10 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 7
+                        </div>
+                        <button class="add-to-cart-btn" data-title="UFC 5" data-price="800" data-image="image/EA-SPORTS-UFC-5.jpg">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 16: SnowRunner -->
+                <div class="game-card" data-price="700">
+                    <div class="game-card-image-wrapper">
+                        <img src="image/snowrunner.jpg" alt="SnowRunner" class="game-card-image">
+                        <span class="game-card-badge">Simulation</span>
+                    </div>
+                    <div class="game-card-content">
+                        <h3 class="game-card-title">SnowRunner</h3>
+                        <p class="game-card-description">
+                            Embark on an epic off-road adventure. Brave harsh winter conditions and conquer treacherous terrain in rugged vehicles with realistic physics and stunning graphics.
+                        </p>
+                        <div class="game-card-meta">
+                            <span class="game-card-price">700.00 DH</span>
+                            <span class="game-card-stock">
+                                <i class="fas fa-check-circle"></i>
+                                6 in stock
+                            </span>
+                        </div>
+                        <div class="game-card-delivery">
+                            <i class="fas fa-truck"></i>
+                            Get it by July 10
+                        </div>
+                        <button class="add-to-cart-btn" data-title="SnowRunner" data-price="700" data-image="image/snowrunner.jpg">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Cart Toggle Button -->
+    <button class="cart-toggle" id="cart-toggle">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cart-badge">0</span>
+    </button>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Cart Sidebar -->
+    <aside class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2 class="cart-title">
+                <i class="fas fa-shopping-cart"></i>
+                Shopping Cart
+            </h2>
+            <button class="cart-close" id="cart-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="cart-total-amount" id="cart-total">0.00 DH</span>
+            </div>
+            <button class="checkout-btn" id="checkout-button" disabled>
+                <i class="fas fa-credit-card"></i>
+                Proceed to Checkout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Item added to cart!</span>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Loader
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader");
+            loader.classList.add("loader-hidden");
         });
 
-        $('.quantity-input').change(function() {
-            const title = $(this).data('title');
-            const newQuantity = parseInt($(this).val());
-            const itemIndex = cart.findIndex(cartItem => cartItem.title === title);
-            if (itemIndex >= 0 && newQuantity > 0) {
-                cart[itemIndex].quantity = newQuantity;
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
-            updateCart();
         });
-    }
 
-    $('#checkout-button').click(function() {
-        const totalPrice = parseFloat(totalPriceContainer.text().replace('Total: ', '').replace('DH', '')) || 0;
-        if (totalPrice === 0 && cart.length === 0) {
-            swal({
-                title: "Your cart is empty!",
-                text: "Please add something to your cart",
-                icon: "error",
-                confirmButtonText: "OK"
+        // Mobile menu toggle
+        const navbarToggle = document.querySelector('.navbar-toggle');
+        const navbarNav = document.querySelector('.navbar-nav');
+        
+        navbarToggle.addEventListener('click', () => {
+            navbarNav.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navbarNav.classList.remove('active');
             });
-        } else {
-            sessionStorage.setItem("total-price", totalPrice.toString());
-            console.log("Total price stored in sessionStorage:", sessionStorage.getItem("total-price"));
-            window.location.href = "/Pf/frontend/checkout.html";
-        }
-    });
-});
+        });
 
+        // ========================================
+        // SHOPPING CART FUNCTIONALITY
+        // ========================================
+        
+        let cart = JSON.parse(localStorage.getItem('cart-items')) || [];
+        
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalContainer = document.getElementById('cart-total');
+        const cartBadge = document.getElementById('cart-badge');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartToggle = document.getElementById('cart-toggle');
+        const cartClose = document.getElementById('cart-close');
+        const checkoutButton = document.getElementById('checkout-button');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
 
-//
+        // Initialize cart on page load
+        updateCart();
 
-    document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelectorAll('.add-to-cart').forEach(button => {
+        // Add to cart buttons
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
             button.addEventListener('click', function() {
-                const card = this.closest('.card-body');
-                const title = card.querySelector('.card-title').textContent;
-                const price = card.querySelector('.text-primary').textContent.split(':')[1].trim();
-                const quantity = card.querySelector('span').textContent.split(':')[1].trim();
+                const title = this.dataset.title;
+                const price = parseFloat(this.dataset.price);
+                const image = this.dataset.image;
 
-                const data = { title, price, quantity };
+                const existingItemIndex = cart.findIndex(item => item.title === title);
+                
+                if (existingItemIndex >= 0) {
+                    cart[existingItemIndex].quantity += 1;
+                } else {
+                    cart.push({ title, price, image, quantity: 1 });
+                }
 
-                fetch('/add-to-cart', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data.message);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+                updateCart();
+                showToast(`${title} added to cart!`);
+                
+                // Button feedback
+                this.classList.add('added');
+                this.innerHTML = '<i class="fas fa-check"></i> Added';
+                setTimeout(() => {
+                    this.classList.remove('added');
+                    this.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+                }, 2000);
             });
         });
-    });
 
+        // Update cart display
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            let totalPrice = 0;
+            let totalItems = 0;
 
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Your cart is empty</p>
+                    </div>
+                `;
+                checkoutButton.disabled = true;
+            } else {
+                checkoutButton.disabled = false;
+                
+                cart.forEach(item => {
+                    totalPrice += item.price * item.quantity;
+                    totalItems += item.quantity;
 
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}" class="cart-item-image">
+                        <div class="cart-item-info">
+                            <div>
+                                <div class="cart-item-title">${item.title}</div>
+                                <div class="cart-item-price">${item.price}.00 DH</div>
+                            </div>
+                            <div class="cart-item-controls">
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-title="${item.title}">
+                                <button class="remove-btn" data-title="${item.title}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+                });
 
-</script>
+                // Add event listeners for quantity and remove buttons
+                document.querySelectorAll('.quantity-input').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const title = this.dataset.title;
+                        const newQuantity = parseInt(this.value);
+                        const itemIndex = cart.findIndex(item => item.title === title);
+                        
+                        if (itemIndex >= 0 && newQuantity > 0) {
+                            cart[itemIndex].quantity = newQuantity;
+                            updateCart();
+                        }
+                    });
+                });
 
-<style>
-    .card-img-top {
-        height: 25em;
-    }
-    .card-body {
-        height: fit-content;
-    }
-    
-</style>
+                document.querySelectorAll('.remove-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const title = this.dataset.title;
+                        cart = cart.filter(item => item.title !== title);
+                        updateCart();
+                        showToast('Item removed from cart');
+                    });
+                });
+            }
+
+            cartTotalContainer.textContent = `${totalPrice.toFixed(2)} DH`;
+            cartBadge.textContent = totalItems;
+            
+            // Save to localStorage
+            localStorage.setItem('cart-items', JSON.stringify(cart));
+        }
+
+        // Cart sidebar toggle
+        cartToggle.addEventListener('click', () => {
+            cartSidebar.classList.add('active');
+            cartOverlay.classList.add('active');
+        });
+
+        cartClose.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', closeCart);
+
+        function closeCart() {
+            cartSidebar.classList.remove('active');
+            cartOverlay.classList.remove('active');
+        }
+
+        // Checkout
+        checkoutButton.addEventListener('click', () => {
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            if (cart.length === 0) {
+                showToast('Your cart is empty!', 'error');
+                return;
+            }
+
+            sessionStorage.setItem('total-price', totalPrice.toString());
+            window.location.href = 'checkout.html';
+        });
+
+        // Toast notification
+        function showToast(message, type = 'success') {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            if (type === 'error') {
+                toast.style.borderLeftColor = '#ef4444';
+                toast.querySelector('i').style.color = '#ef4444';
+            } else {
+                toast.style.borderLeftColor = 'var(--primary-color)';
+                toast.querySelector('i').style.color = 'var(--primary-color)';
+            }
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ========================================
+        // FILTER FUNCTIONALITY
+        // ========================================
+        
+        const filterSelect = document.getElementById('filter');
+        const gamesGrid = document.getElementById('games-grid');
+
+        filterSelect.addEventListener('change', function() {
+            const selectedOption = this.value;
+            const gameCards = Array.from(document.querySelectorAll('.game-card'));
+
+            if (selectedOption === 'default') {
+                gameCards.sort((a, b) => {
+                    return Array.from(gamesGrid.children).indexOf(a) - Array.from(gamesGrid.children).indexOf(b);
+                });
+            } else if (selectedOption === 'expensive') {
+                gameCards.sort((a, b) => {
+                    return parseFloat(b.dataset.price) - parseFloat(a.dataset.price);
+                });
+            } else if (selectedOption === 'cheap') {
+                gameCards.sort((a, b) => {
+                    return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
+                });
+            }
+
+            // Re-append sorted cards
+            gameCards.forEach(card => gamesGrid.appendChild(card));
+        });
+    </script>
 </body>
 </html>

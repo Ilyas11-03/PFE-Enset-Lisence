@@ -1,153 +1,408 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <meta name="description" content="Créez votre compte - PF Game Store">
     
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<!--Sweet Alert-->
-<script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
-    <title>Sign Up</title>
+    <title>Sign Up - PF Game Store</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="image/cover.png" type="image/x-icon">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/singin.css">
 </head>
 <body>
-    <div class="form-container">
-        <p class="title">Create Account</p>
-        <form class="form" name="signupForm">
-            <input type="email" class="input" placeholder="Email" name="email" id="email">
-            <input type="password" class="input" placeholder="Password" name="password" id="password">
-            <input type="password" class="input" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword">
-            <button type="submit" class="form-btn" id="submit">Sign Up</button>
-        </form>
-        <p class="sign-up-label">
-            Already have an account? <span class="sign-up-link"><a href="login.html">Log in</a></span>
-        </p>
-        
+    <!-- Loader -->
+    <div class="loader"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="main.html" class="navbar-brand">
+                <i class="fa-brands fa-playstation"></i>
+                <span>PS5 Store</span>
+            </a>
+            
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="navbar-nav">
+                <li><a href="main.html" class="nav-link">Home</a></li>
+                <li><a href="game.html" class="nav-link">Games</a></li>
+                <li><a href="promotion.html" class="nav-link">Promotions</a></li>
+                <li><a href="login.html" class="nav-link">Log In</a></li>
+                <li><a href="signin.html" class="nav-link btn btn-primary" style="padding: 0.5rem 1.5rem;">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Signin Page -->
+    <div class="signin-page">
+        <div class="signin-container">
+            <div class="signin-card">
+                <!-- Header -->
+                <div class="signin-header">
+                    <div class="signin-logo">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h1 class="signin-title">Create Account</h1>
+                    <p class="signin-subtitle">Join the gaming community today</p>
+                </div>
+
+                <!-- Form -->
+                <form class="signin-form" id="signin-form">
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope"></i>
+                            Email Address
+                        </label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                class="form-input" 
+                                placeholder="you@example.com" 
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                class="form-input" 
+                                placeholder="Create a strong password" 
+                                required
+                            >
+                            <button type="button" class="password-toggle" id="toggle-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Password Strength Indicator -->
+                        <div class="password-strength" id="password-strength" style="display: none;">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strength-fill"></div>
+                            </div>
+                            <div class="strength-text">
+                                <span>Password strength:</span>
+                                <span class="strength-label" id="strength-label">Weak</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">
+                            <i class="fas fa-lock"></i>
+                            Confirm Password
+                        </label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-check-circle input-icon"></i>
+                            <input 
+                                type="password" 
+                                id="confirmPassword" 
+                                class="form-input" 
+                                placeholder="Confirm your password" 
+                                required
+                            >
+                            <button type="button" class="password-toggle" id="toggle-confirm-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Password Requirements -->
+                    <div class="password-requirements">
+                        <div class="requirements-title">
+                            <i class="fas fa-info-circle"></i>
+                            Password must contain:
+                        </div>
+                        <div class="requirement" id="req-length">
+                            <i class="fas fa-circle"></i>
+                            <span>At least 8 characters</span>
+                        </div>
+                        <div class="requirement" id="req-uppercase">
+                            <i class="fas fa-circle"></i>
+                            <span>One uppercase letter</span>
+                        </div>
+                        <div class="requirement" id="req-number">
+                            <i class="fas fa-circle"></i>
+                            <span>One number</span>
+                        </div>
+                        <div class="requirement" id="req-special">
+                            <i class="fas fa-circle"></i>
+                            <span>One special character (!@#$%^&*)</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-button" id="submit-button">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Create Account</span>
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="divider">or</div>
+
+                <!-- Login Link -->
+                <p class="login-text">
+                    Already have an account? 
+                    <a href="login.html" class="login-link">Log in now</a>
+                </p>
+
+                <!-- Security Badge -->
+                <div class="security-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure Registration - 256-bit SSL Encryption</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: x-large;
-            background: rgb(0,207,255);
-            background: linear-gradient(90deg, rgba(0,207,255,1) 0%, rgba(0,207,255,1) 8%, rgba(0,207,255,1) 12%, rgba(0,207,255,1) 18%, rgba(0,207,255,1) 21%, rgba(0,207,255,0.22181372549019607) 52%);
-            background-image: url('image/PS5.webp');
-        }
-        .form-container {
-            width: 350px;
-            height: 500px;
-            background-color: #fff;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            border-radius: 10px;
-            box-sizing: border-box;
-            padding: 20px 30px;
-            position: absolute;
-            top: 100px;
-            background-image: url('');
-        }
-        .title {
-            text-align: center;
-            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-                "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-            margin: 10px 0 30px 0;
-            font-size: 28px;
-            font-weight: 800;
-        }
-        .form {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            margin-bottom: 15px;
-        }
-        .input {
-            border-radius: 20px;
-            border: 1px solid #c0c0c0;
-            outline: 0 !important;
-            box-sizing: border-box;
-            padding: 12px 15px;
-        }
-        .form-btn {
-            padding: 10px 15px;
-            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-                "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-            border-radius: 20px;
-            border: 0 !important;
-            outline: 0 !important;
-            background: teal;
-            color: white;
-            cursor: pointer;
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        }
-        .form-btn:active {
-            box-shadow: none;
-        }
-        .sign-up-label {
-            margin: 0;
-            font-size: 10px;
-            color: #747474;
-            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-                "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-        }
-        .sign-up-link {
-            margin-left: 1px;
-            font-size: 11px;
-            text-decoration: underline;
-            text-decoration-color: teal;
-            color: teal;
-            cursor: pointer;
-            font-weight: 800;
-            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-                "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-        }
-    </style>
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Account created successfully!</span>
+    </div>
 
+    <!-- Scripts -->
     <script>
-        $("#submit").click(function(event){
-            event.preventDefault();
-            var email = $("#email").val();
-            var password = $("#password").val();
-            var confirmPassword = $("#confirmPassword").val()
-             if (email == "" || password == "" || confirmPassword == ""){
-                 swal ({
-                    title: "Error",
-                    text: "To sign up you must enter email, password and confirm password",
-                    icon: "error",
-                    button: "Ok"
-                 })
-             } else if (password != confirmPassword) {
-                swal ({
-                    title: "Error",
-                    text: "Passwords do not match",
-                    icon: "error",
-                    button: "Ok"
-                })
-             } else if (password.length < 8 && confirmPassword.length < 8) {
-                swal ({
-                    title: "Error",
-                    text: "Password must be at least 8 characters long",
-                    icon: "error",
-                    button: "Ok"
-                })
+        // Loader
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader");
+            loader.classList.add("loader-hidden");
+        });
 
-             } else {
-                swal({
-                    title: "Success",
-                    text: "Sign up successful",
-                    icon: "success",
-                    button: "Ok",
-                })
-                sessionStorage.setItem("email", email)
-                sessionStorage.setItem("password", password)
-                window.location.href = "main.html"
-              
-             }
-               
-        })
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const navbarToggle = document.querySelector('.navbar-toggle');
+        const navbarNav = document.querySelector('.navbar-nav');
+        
+        navbarToggle.addEventListener('click', () => {
+            navbarNav.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navbarNav.classList.remove('active');
+            });
+        });
+
+        // ========================================
+        // PASSWORD TOGGLE
+        // ========================================
+        const togglePassword = document.getElementById('toggle-password');
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = togglePassword.querySelector('i');
+
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            if (type === 'text') {
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        });
+
+        const toggleConfirmPassword = document.getElementById('toggle-confirm-password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const confirmEyeIcon = toggleConfirmPassword.querySelector('i');
+
+        toggleConfirmPassword.addEventListener('click', function() {
+            const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPasswordInput.setAttribute('type', type);
+            
+            if (type === 'text') {
+                confirmEyeIcon.classList.remove('fa-eye');
+                confirmEyeIcon.classList.add('fa-eye-slash');
+            } else {
+                confirmEyeIcon.classList.remove('fa-eye-slash');
+                confirmEyeIcon.classList.add('fa-eye');
+            }
+        });
+
+        // ========================================
+        // PASSWORD STRENGTH INDICATOR
+        // ========================================
+        const passwordStrength = document.getElementById('password-strength');
+        const strengthFill = document.getElementById('strength-fill');
+        const strengthLabel = document.getElementById('strength-label');
+
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            
+            if (password.length === 0) {
+                passwordStrength.style.display = 'none';
+                return;
+            }
+            
+            passwordStrength.style.display = 'block';
+            
+            let strength = 0;
+            let hasLength = password.length >= 8;
+            let hasUppercase = /[A-Z]/.test(password);
+            let hasNumber = /[0-9]/.test(password);
+            let hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+            
+            if (hasLength) strength++;
+            if (hasUppercase) strength++;
+            if (hasNumber) strength++;
+            if (hasSpecial) strength++;
+            
+            // Update strength bar
+            strengthFill.className = 'strength-fill';
+            strengthLabel.className = 'strength-label';
+            
+            if (strength <= 1) {
+                strengthFill.classList.add('weak');
+                strengthLabel.classList.add('weak');
+                strengthLabel.textContent = 'Weak';
+            } else if (strength <= 2) {
+                strengthFill.classList.add('medium');
+                strengthLabel.classList.add('medium');
+                strengthLabel.textContent = 'Medium';
+            } else {
+                strengthFill.classList.add('strong');
+                strengthLabel.classList.add('strong');
+                strengthLabel.textContent = 'Strong';
+            }
+            
+            // Update requirements
+            updateRequirement('req-length', hasLength);
+            updateRequirement('req-uppercase', hasUppercase);
+            updateRequirement('req-number', hasNumber);
+            updateRequirement('req-special', hasSpecial);
+        });
+
+        function updateRequirement(id, met) {
+            const req = document.getElementById(id);
+            const icon = req.querySelector('i');
+            
+            if (met) {
+                req.classList.add('met');
+                icon.classList.remove('fa-circle');
+                icon.classList.add('fa-check-circle');
+            } else {
+                req.classList.remove('met');
+                icon.classList.remove('fa-check-circle');
+                icon.classList.add('fa-circle');
+            }
+        }
+
+        // ========================================
+        // FORM SUBMISSION
+        // ========================================
+        const signinForm = document.getElementById('signin-form');
+        const submitButton = document.getElementById('submit-button');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+
+        signinForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            // Validation
+            if (!email || !password || !confirmPassword) {
+                showToast('Please fill in all fields', 'error');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showToast('Please enter a valid email address', 'error');
+                return;
+            }
+
+            // Password length validation
+            if (password.length < 8) {
+                showToast('Password must be at least 8 characters long', 'error');
+                return;
+            }
+
+            // Password match validation
+            if (password !== confirmPassword) {
+                showToast('Passwords do not match', 'error');
+                return;
+            }
+
+            // Simulate signup process
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Creating account...</span>';
+
+            setTimeout(() => {
+                // Store user info
+                sessionStorage.setItem('email', email);
+                sessionStorage.setItem('password', password);
+                
+                showToast('Account created successfully! Redirecting...', 'success');
+                
+                // Redirect after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'main.html';
+                }, 2000);
+            }, 1500);
+        });
+
+        // Toast notification
+        function showToast(message, type = 'success') {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            if (type === 'error') {
+                toast.style.borderLeftColor = '#ef4444';
+                toast.querySelector('i').style.color = '#ef4444';
+                toast.querySelector('i').className = 'fas fa-exclamation-circle';
+            } else {
+                toast.style.borderLeftColor = '#22c55e';
+                toast.querySelector('i').style.color = '#22c55e';
+                toast.querySelector('i').className = 'fas fa-check-circle';
+            }
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
     </script>
 </body>
 </html>
